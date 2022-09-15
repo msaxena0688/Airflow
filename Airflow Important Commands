@@ -1,0 +1,18 @@
+docker-compose ps
+docker exec -it materials_airflow-scheduler_1 /bin/bash  ---> to enter the VM of the container
+
+To test the status of the task:
+airflow tasks test user_processing extract_user 2022-01-01
+
+
+Hook: External Tool Interaction
+It takes the complexities from the external tool.
+
+--To check the temporary file write:
+docker exec -it materials_airflow-worker_1 /bin/bash
+processed_user.csv  pymp-evvy28nd  pymp-u619f0jx  tmp8vnu40h4
+
+--To check the database:
+docker exec -it materials_postgres_1 /bin/bash
+psql -Uairflow
+select * from users;
